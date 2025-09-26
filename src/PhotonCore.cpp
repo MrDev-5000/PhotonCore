@@ -32,6 +32,7 @@ void PhotonCore::turnOff() {
 
 
 void PhotonCore::turnOn(int brightness) {
+    if (brightness == -1) brightness = maxBrightness;
     brightness = constrain(brightness, minBrightness, maxBrightness);
     analogWrite(LED, brightness);
     updateLedStatusInfo(brightness);
@@ -43,7 +44,6 @@ bool PhotonCore::isOff() const {
 }
 
 bool PhotonCore::isOn(int brightness) const {
-    if (brightness == -1) brightness = maxBrightness;
     return (this->brightness >= brightness && brightness != 0 && this->ledState == ACTIVE);
 }
 
