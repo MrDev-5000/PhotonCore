@@ -74,16 +74,16 @@ void PhotonCore::fadeOn(double onDuration, TimeUnit unit) {
 }
 
 
-void PhotonCore::fade(double onDuration, double offDuration, TimeUnit unit) {
+void PhotonCore::fade(double onDuration, double offDuration, TimeUnit onUnit, TimeUnit offUnit) {
     this->onDuration = onDuration;
     this->offDuration = offDuration;
 
     if (ledState == INACTIVE) {
-        fadeOn(onDuration, unit);
+        fadeOn(onDuration, onUnit);
     }
 
     if (ledState == ACTIVE) {
-        fadeOff(offDuration, unit);
+        fadeOff(offDuration, offUnit);
     }
 }
 
@@ -105,22 +105,22 @@ void PhotonCore::blink(double duration, TimeUnit unit) {
 }
 
 
-void PhotonCore::blink(double onDuration, double offDuration, TimeUnit unit) {
+void PhotonCore::blink(double onDuration, double offDuration, TimeUnit onUnit, TimeUnit offUnit) {
     this->onDuration = onDuration;
     this->offDuration = offDuration;
 
-    if (onDuration == offDuration) {
+    if (onDuration == offDuration && onUnit == offUnit) {
         this->duration = onDuration;
-        blink(onDuration, unit);
+        blink(onDuration, onUnit);
         return;
     }
 
-    if (ledState == INACTIVE && blinkTimer.hasExpired(onDuration, unit)) {
+    if (ledState == INACTIVE && blinkTimer.hasExpired(onDuration, onUnit)) {
         digitalWrite(LED, HIGH);
         updateLedStatusInfo(maxBrightness);
     }
 
-    if (ledState == ACTIVE && blinkTimer.hasExpired(offDuration, unit)) {
+    if (ledState == ACTIVE && blinkTimer.hasExpired(offDuration, offUnit)) {
         digitalWrite(LED, LOW);
         updateLedStatusInfo(minBrightness);
     }

@@ -40,9 +40,9 @@ public:
     bool isOn(int brightness = 1) const;
 
     void fade(double duration, TimeUnit unit = MILLISECOND);
-    void fade(double onDuration, double offDuration, TimeUnit unit = MILLISECOND);
+    void fade(double onDuration, double offDuration, TimeUnit onUnit = MILLISECOND, TimeUnit offUnit = MILLISECOND);
     void blink(double duration, TimeUnit unit = MILLISECOND);
-    void blink(double onDuration, double offDuration, TimeUnit unit = MILLISECOND);
+    void blink(double onDuration, double offDuration, TimeUnit onUnit = MILLISECOND, TimeUnit offUnit = MILLISECOND);
 
 private:
     void updateLedStatusInfo(int brightness);
