@@ -4,6 +4,7 @@
 #include <Arduino.h>
 
 PhotonCore::PhotonCore(int resolution) :
+    pwmResolution(resolution),
     maxBrightness(resolution),
     minBrightness(0),
     offDuration(0),
@@ -50,8 +51,9 @@ bool PhotonCore::isOn(int brightness) const {
 
 void PhotonCore::fadeOff(double offDuration, TimeUnit unit) {
     this->offDuration = offDuration;
+    double stepDuration = offDuration / static_cast<double>(pwmResolution);
 
-    if (this->brightness > minBrightness && fadeTimer.hasExpired(offDuration, unit)) {
+    if (this->brightness > minBrightness && fadeTimer.hasExpired(stepDuration, unit)) {
         this->brightness -= this->fadeAmount;
 
         if (this->brightness <= minBrightness) updateLedStatusInfo(minBrightness);
@@ -63,8 +65,9 @@ void PhotonCore::fadeOff(double offDuration, TimeUnit unit) {
 
 void PhotonCore::fadeOn(double onDuration, TimeUnit unit) {
     this->onDuration = onDuration;
+    double stepDuration = onDuration / static_cast<double>(pwmResolution);
 
-    if (this->brightness < maxBrightness && fadeTimer.hasExpired(onDuration, unit)) {
+    if (this->brightness < maxBrightness && fadeTimer.hasExpired(stepDuration, unit)) {
         this->brightness += this->fadeAmount;
 
         if (this->brightness >= maxBrightness) updateLedStatusInfo(maxBrightness);
