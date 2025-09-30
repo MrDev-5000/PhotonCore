@@ -1,0 +1,12 @@
+
+PhotonCore	KEYWORD1
+
+setPin	KEYWORD2
+turnOff	KEYWORD2
+fadeOff	KEYWORD2
+isOff	KEYWORD2
+turnOn	KEYWORD2
+fadeOn	KEYWORD2
+isOn	KEYWORD2
+fade	KEYWORD2
+blink	KEYWORD2
