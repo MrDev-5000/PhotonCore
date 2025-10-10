@@ -1,5 +1,5 @@
 /**
- * @brief Examples sketch for blinking a LED with irregular intervals
+ * @brief Examples sketch for blinking a LED with irregular time intervals
  * @param onDuration represents how long LED stays on in the desired unit.
  * @param offDuration represents how long LED stays off in the desired unit.
  * 
@@ -44,12 +44,12 @@ void loop() {
   * Only one of the following formats should be used at a time, Uncomment the desired line.
   */ 
 
-  // MyLed.blink(onDurationInMins, offDurationInMins, MINUTE);                ///< Toggle LED (on for 1/300 sec (200 ms), off for 1/30 mi (2 sec))
+  // MyLed.blink(onDurationInMins, offDurationInMins, MINUTE, MINUTE);                     ///< Toggle LED (on for 1/300 sec (200 ms), off for 1/30 mi (2 sec))
 
-  // MyLed.blink(onDurationInSec, offDurationInSec, SECOND);                  ///< Toggle LED (on for 1/5 sec (200 ms), off for 2 sec)
+  // MyLed.blink(onDurationInSec, offDurationInSec, SECOND, SECOND);                       ///< Toggle LED (on for 1/5 sec (200 ms), off for 2 sec)
  
-  MyLed.blink(onDurationInMillisec, offDurationInMillisec);                   ///< Toggle LED (on for 200 ms, off for 2000 ms (2 sec))
+  MyLed.blink(onDurationInMillisec, offDurationInMillisec);                                ///< Toggle LED (on for 200 ms, off for 2000 ms (2 sec))
 
-  // MyLed.blink(onDurationInMicrosec, offDurationInMicrosec, MICROSECOND);   ///< Toggle LED (on for 20,00,00 us (200 ms), off for 2,000,000 us (2 sec))
+  // MyLed.blink(onDurationInMicrosec, offDurationInMicrosec, MICROSECOND, MICROSECOND);   ///< Toggle LED (on for 20,00,00 us (200 ms), off for 2,000,000 us (2 sec))
 
 }

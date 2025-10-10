@@ -18,6 +18,7 @@ private:
     TimerKernel fadeTimer;
     TimerKernel blinkTimer;
 
+    const int pwmResolution;
     const int maxBrightness;
     const int minBrightness;
     double offDuration;
