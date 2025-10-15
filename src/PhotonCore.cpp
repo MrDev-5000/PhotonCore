@@ -4,15 +4,26 @@
 #include <Arduino.h>
 
 PhotonCore::PhotonCore(int resolution) :
-    pwmResolution(resolution),
-    maxBrightness(resolution),
+    pwmResolution(
+        #ifdef analogWriteResolution
+            resolution
+        #else
+            255
+        #endif
+    ),
+    maxBrightness(pwmResolution),
     minBrightness(0),
     offDuration(0),
     onDuration(0),
     duration(0),
     ledState(INACTIVE),
     brightness(minBrightness),
-    fadeAmount(1) {}
+    fadeAmount(1) 
+    {
+        #ifdef analogWriteResolution
+            analogWriteResolution(resolution);
+        #endif
+    }
 
 
 void PhotonCore::setPin(int LED) {
