@@ -1,5 +1,12 @@
 # Change log
 
+## v2.0.3
+
+- Fix: Add checks to ensure the board supports setting `analogWriteResolution`.
+- Fix: Resolve incorrect PWM behavior on unsupported boards.
+
+---
+
 ## v2.0.2
 
 - Fix: Add `double stepDuration = offDuration / static_cast<double>(pwmResolution);` to both `fadeOff()` and `fadeOn()`.
